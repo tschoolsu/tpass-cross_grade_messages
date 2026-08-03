@@ -3,7 +3,7 @@
 export const TERMS_PATH = "/terms" as const;
 
 export const TERMS_META = {
-  version: "v1.0",
+  version: "v1.1",
   title: "第五屆學生會跨屆代傳訊息服務（T-Msg）使用者守則",
   subtitle: "完整條款",
   audience: "經 T-Pass 單一登入（SSO）驗證之本校師生",

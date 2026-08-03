@@ -6,7 +6,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # tpass-cross_grade_messages（T-Msg 跨屆傳訊）
 
-學生填訊息 → 廣播到所有啟用中的 Google Chat webhook。生態系總覽、`services.json` 註冊表與 `tpass` CLI 見上層 **tpass-ops** repo（`AGENTS.md`、`docs/`）。
+學生勾選要送的屆別（＝啟用中的 Google Chat webhook，預設全選、至少一個）→ 填訊息 → 廣播。生態系總覽、`services.json` 註冊表與 `tpass` CLI 見上層 **tpass-ops** repo（`AGENTS.md`、`docs/`）。
 
 ## 鐵律
 
@@ -19,6 +19,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## 資料模型速記（`prisma/schema.prisma`）
 
+- Webhook 顯示順序：`Webhook.sortOrder`（小的在前，平手退回 `createdAt`）。列 webhook 一律用 `WEBHOOK_ORDER`（`src/lib/db.ts`），別自己寫 orderBy。admin 上/下移＝整份重寫成 0..n-1。
 - 冷卻：`UserStatus.nextAllowedAt`（null/已過 = 可傳；送出時原子 `updateMany` 搶名額；重置 = 設 null）。
 - 封鎖：`bannedAt` 非 null 即封鎖，`banExpiresAt` null = 永久。
 - 全域設定：`Setting` key-value（`cooldownHours` / `bannedWords`），無 row 用預設值。

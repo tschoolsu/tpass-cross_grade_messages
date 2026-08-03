@@ -5,7 +5,7 @@ import { Ban, Clock, LogIn, MessagesSquare } from "lucide-react";
 import { getSession } from "@/lib/tpass-auth";
 import { isAdmin } from "@/config/admin";
 import { authConfig, loginUrlFor } from "@/config/auth";
-import { prisma } from "@/lib/db";
+import { prisma, WEBHOOK_ORDER } from "@/lib/db";
 import { getCooldownHours } from "@/lib/settings";
 import { getGuidelinesMarkdown } from "@/lib/content";
 import { activeBan, cooldownRemainingMs, formatRemaining } from "@/lib/status";
@@ -13,7 +13,7 @@ import { MAX_CONTENT_LENGTH } from "@/lib/constants";
 import { MessageForm } from "@/components/MessageForm";
 import { Guidelines } from "@/components/Guidelines";
 import { PortalLink } from "@/components/common/PortalLink";
-import { Badge, Button } from "@/components/ui/primitives";
+import { Button } from "@/components/ui/primitives";
 
 function LoggedOutNotice() {
   return (
@@ -62,7 +62,7 @@ export default async function HomePage({
     getCooldownHours(),
     prisma.webhook.findMany({
       where: { enabled: true },
-      orderBy: { createdAt: "asc" },
+      orderBy: WEBHOOK_ORDER,
       select: { id: true, name: true },
     }),
   ]);
@@ -114,23 +114,12 @@ export default async function HomePage({
           <h1 className="font-extrabold text-2xl tracking-tight">跨屆傳訊</h1>
         </div>
         <p className="font-medium text-muted-foreground mb-4">
-          寫一則訊息，同步送到各屆的 Google Chat 群組。訊息會以你的名義署名送出。
+          寫一則訊息，送到你選擇的各屆 Google Chat 群組（預設全選）。訊息會以你的名義署名送出。
         </p>
 
         <div className="mb-6">
           <Guidelines content={guidelines} portalUrl={authConfig.portalUrl} />
         </div>
-
-        {webhooks.length > 0 && (
-          <div className="mb-6 flex flex-wrap items-center gap-2">
-            <span className="text-sm font-bold">將送達：</span>
-            {webhooks.map((w) => (
-              <Badge key={w.id} className="bg-tone-blue-badge">
-                {w.name}
-              </Badge>
-            ))}
-          </div>
-        )}
 
         {ban ? (
           <div className="rounded-2xl border-2 border-foreground bg-tone-rose-bg p-5 shadow-[4px_4px_0_0_var(--color-foreground)]">
@@ -154,7 +143,11 @@ export default async function HomePage({
             </p>
           </div>
         ) : (
-          <MessageForm maxLength={MAX_CONTENT_LENGTH} cooldownHours={cooldownHours} />
+          <MessageForm
+            maxLength={MAX_CONTENT_LENGTH}
+            cooldownHours={cooldownHours}
+            webhooks={webhooks}
+          />
         )}
       </main>
     </div>

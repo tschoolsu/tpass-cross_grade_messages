@@ -9,13 +9,18 @@ datasource db {
 
 // Google Chat incoming webhook 清單，全由 admin UI 管理。
 // url 內含 key/token secret：不進 git、不進 log，UI 顯示要截斷。
+// sortOrder：admin 排的顯示順序（小的在前），一律配 createdAt asc 當平手時的第二鍵。
+// 上下移動時整份重寫成 0..n-1，不留空隙也不會有並列值。
 model Webhook {
   id        String   @id @default(cuid())
   name      String
   url       String
   enabled   Boolean  @default(true)
+  sortOrder Int      @default(0)
   createdBy String
   createdAt DateTime @default(now())
+
+  @@index([sortOrder, createdAt])
 }
 
 // 每一則送出的訊息（審計紀錄，投遞失敗也保留）。
