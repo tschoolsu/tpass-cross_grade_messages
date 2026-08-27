@@ -2,9 +2,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Ban, Clock, LogIn, MessagesSquare } from "lucide-react";
-import { getSession } from "@/lib/tpass-auth";
+import { tpass, authConfig, loginUrlFor } from "@/config/auth";
 import { isAdmin } from "@/config/admin";
-import { authConfig, loginUrlFor } from "@/config/auth";
 import { prisma, WEBHOOK_ORDER } from "@/lib/db";
 import { getCooldownHours } from "@/lib/settings";
 import { getGuidelinesMarkdown } from "@/lib/content";
@@ -50,7 +49,7 @@ export default async function HomePage({
 }: {
   searchParams: Promise<{ logout?: string }>;
 }) {
-  const session = await getSession();
+  const session = await tpass.getSession();
   // logout=1 只是 auth 導回來的畫面提示，不是憑證：只有在 session 確實無效時才採信。
   const { logout } = await searchParams;
   const justLoggedOut = !session && logout === "1";

@@ -2,8 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ScrollText } from "lucide-react";
-import { authConfig } from "@/config/auth";
-import { getSession } from "@/lib/tpass-auth";
+import { authConfig, tpass } from "@/config/auth";
 import { TERMS_META } from "@/lib/terms";
 import { getTermsSections } from "@/lib/content";
 import { PortalLink } from "@/components/common/PortalLink";
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function TermsPage() {
-  const session = await getSession();
+  const session = await tpass.getSession();
   const sections = getTermsSections();
 
   return (
