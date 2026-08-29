@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { Ban } from "lucide-react";
 import { banUserAction, type BanResult } from "@/app/admin/users/actions";
-import { Button, Input } from "@/components/ui/primitives";
+import { Button, Input } from "tpass-ui";
 
 export function BanUserForm({ email }: { email: string }) {
   const [state, action, pending] = useActionState<BanResult | null, FormData>(

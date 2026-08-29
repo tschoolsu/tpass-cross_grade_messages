@@ -6,7 +6,7 @@ import { authConfig, tpass } from "@/config/auth";
 import { TERMS_META } from "@/lib/terms";
 import { getTermsSections } from "@/lib/content";
 import { PortalLink } from "@/components/common/PortalLink";
-import { Badge } from "@/components/ui/primitives";
+import { Badge } from "tpass-ui";
 import { RichMarkdown } from "@/components/markdown/RichMarkdown";
 
 export const metadata: Metadata = {

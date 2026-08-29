@@ -3,7 +3,7 @@
 // url 內含 secret，這裡只顯示截斷版。
 import { Trash2, ChevronUp, ChevronDown } from "lucide-react";
 import { prisma, WEBHOOK_ORDER } from "@/lib/db";
-import { Badge } from "@/components/ui/primitives";
+import { Badge } from "tpass-ui";
 import { WebhookForm, TestWebhookButton } from "@/components/admin/WebhookForm";
 import { deleteWebhookAction, toggleWebhookAction, moveWebhookAction } from "./actions";
 

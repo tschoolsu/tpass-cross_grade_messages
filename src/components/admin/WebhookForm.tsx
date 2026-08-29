@@ -7,7 +7,7 @@ import {
   sendTestWebhookAction,
   type WebhookResult,
 } from "@/app/admin/webhooks/actions";
-import { Button, Input } from "@/components/ui/primitives";
+import { Button, Input } from "tpass-ui";
 
 export function WebhookForm() {
   const [state, action, pending] = useActionState<WebhookResult | null, FormData>(

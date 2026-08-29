@@ -3,7 +3,7 @@
 import { useActionState, useState } from "react";
 import { Send, CheckCircle2, XCircle, Check } from "lucide-react";
 import { sendMessageAction, type SendResult } from "@/app/actions";
-import { Button, Textarea, Badge, cn } from "@/components/ui/primitives";
+import { Button, Textarea, Badge, cn } from "tpass-ui";
 
 export interface WebhookOption {
   id: string;

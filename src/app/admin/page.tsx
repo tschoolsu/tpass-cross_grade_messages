@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
-import { Badge } from "@/components/ui/primitives";
+import { Badge } from "tpass-ui";
 import { SearchBar } from "@/components/admin/SearchBar";
 import type { DeliveryResult } from "@/lib/chat";
 

@@ -1,7 +1,7 @@
 // 後台清單搜尋列：純 GET 表單（送出即帶 ?q=…），無 client JS。
 // 送出時只帶 q，天然丟掉舊的 ?page= → 回到第一頁。
 import { Search } from "lucide-react";
-import { Input, Button } from "@/components/ui/primitives";
+import { Input, Button } from "tpass-ui";
 
 export function SearchBar({
   action,

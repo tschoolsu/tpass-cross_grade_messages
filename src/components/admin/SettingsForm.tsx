@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { Save } from "lucide-react";
 import { saveSettingsAction, type SettingsResult } from "@/app/admin/settings/actions";
-import { Button, Input, Label, Textarea } from "@/components/ui/primitives";
+import { Button, Input, Label, Textarea } from "tpass-ui";
 
 export function SettingsForm({
   cooldownHours,

@@ -4,7 +4,7 @@ import type { Prisma } from "@prisma/client";
 import { RotateCcw, ShieldCheck } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { activeBan, cooldownRemainingMs, formatRemaining } from "@/lib/status";
-import { Badge } from "@/components/ui/primitives";
+import { Badge } from "tpass-ui";
 import { BanUserForm } from "@/components/admin/BanUserForm";
 import { SearchBar } from "@/components/admin/SearchBar";
 import { resetCooldownAction, unbanUserAction } from "./actions";

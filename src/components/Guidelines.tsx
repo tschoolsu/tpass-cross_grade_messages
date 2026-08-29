@@ -8,7 +8,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ScrollText, Check, X, ExternalLink } from "lucide-react";
 import { TERMS_PATH } from "@/lib/terms";
-import { Button } from "@/components/ui/primitives";
+import { Button } from "tpass-ui";
 import { SimpleMarkdown } from "@/components/markdown/SimpleMarkdown";
 
 const SCROLL_EPSILON = 4; // px，容忍次像素捲動誤差（高 DPI / 瀏覽器縮放）

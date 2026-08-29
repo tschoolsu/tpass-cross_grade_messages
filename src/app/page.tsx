@@ -12,7 +12,7 @@ import { MAX_CONTENT_LENGTH } from "@/lib/constants";
 import { MessageForm } from "@/components/MessageForm";
 import { Guidelines } from "@/components/Guidelines";
 import { PortalLink } from "@/components/common/PortalLink";
-import { Button } from "@/components/ui/primitives";
+import { Button } from "tpass-ui";
 
 function LoggedOutNotice() {
   return (
