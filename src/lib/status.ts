@@ -1,5 +1,5 @@
 // UserStatus 的純函式判斷（頁面顯示與 server action 共用同一套邏輯）。
-import type { UserStatus } from "@prisma/client";
+import type { UserStatus } from "@/generated/prisma/client";
 
 export interface ActiveBan {
   reason: string;

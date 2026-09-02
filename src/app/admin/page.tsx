@@ -2,7 +2,7 @@
 // 可用 ?q= 依傳送者姓名/信箱或訊息內容搜尋。
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/db";
 import { Badge } from "tpass-ui";
 import { SearchBar } from "@/components/admin/SearchBar";

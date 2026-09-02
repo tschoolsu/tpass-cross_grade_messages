@@ -6,7 +6,7 @@
 // 冷卻/封鎖閘門一律以 email（網域鎖定、驗證過的校園身分）為鍵，不用 JWT sub——
 // sub 只是最後一次登入的識別碼，不保證同一人恆定同值。
 import { revalidatePath } from "next/cache";
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from "@/generated/prisma/client";
 import { requireSession } from "@/lib/guard";
 import { prisma, WEBHOOK_ORDER } from "@/lib/db";
 import { getCooldownHours, findBannedWord } from "@/lib/settings";

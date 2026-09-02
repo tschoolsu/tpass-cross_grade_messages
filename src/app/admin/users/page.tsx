@@ -1,6 +1,6 @@
 // 使用者管理：一人一列（有傳過訊息或被動過狀態的才會出現）。
 // 可用 ?q= 依姓名/信箱搜尋。
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from "@/generated/prisma/client";
 import { RotateCcw, ShieldCheck } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { activeBan, cooldownRemainingMs, formatRemaining } from "@/lib/status";
